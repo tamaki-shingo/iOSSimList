@@ -1,6 +1,12 @@
 #!/bin/sh
 
-DEVICE_LIST=`find ~/Library/Developer/CoreSimulator/Devices/ -name device.plist`;
+if [[ $1 = 'xctest' ]]
+then
+  DEVICE_LIST=`find ~/Library/Developer/XCTestDevices/ -name device.plist`;
+else
+  DEVICE_LIST=`find ~/Library/Developer/CoreSimulator/Devices/ -name device.plist`;
+fi
+
 array=($DEVICE_LIST)
  for i in "${array[@]}"
  do
